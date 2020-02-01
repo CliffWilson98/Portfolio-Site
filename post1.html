@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cliff Wilson Portfolio</title>
+
+    <style>
+        section:before{
+            height:58px;
+            content: "";
+            display: block;
+        }
+
+        section{
+            min-height: 100vh;
+        }
+
+    </style>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav id="top-navbar" class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark'>
+        <a class='navbar-brand' href="#section-showcase"><strong>Cliff Wilson Portfolio</strong></a>
+
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#menu'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class='collapse navbar-collapse' id='menu'>
+            <ul class='nav navbar-nav ml-auto'>
+                <li class='nav-item'>
+                    <a class='nav-link' href="index.html"> Back To Home </a>
+                </li>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container-fluid text-center">
+            <h1> Godot as an Alternative to Unity and Unreal</h1>
+        </div>
+        <hr>
+        <div class="container-fluid  w-50">
+            <p> Although I have never considered myself serious about developing a game of my own, I still enjoy keeping up with 
+                the tools that are available for modern game development and experimenting with them myself. For many years, Unity and Unreal have been 
+                the two primary engines that are most commonly used by game developers who do not wish to build their own from scratch, 
+                but as of lately the Godot engine has been rising in popularity.
+            </p>
+            <p> One of the most impressive things about Godot is just how lightweight the engine is. The engine is entirely self contained, requiring
+                no installer, and is only 60 mb. Last I checked, the Unity engine was well over 500 mb, and Unreal is upwards of 10 gb. Admittedly, Godot is 
+                not as feature rich as Unreal or Unity, but I find many of the added "features" of those engines to be extraneous. Godot also boots in seconds,
+                even on a slow hard drive. Unreal on the other hand is practically unusable unless you have an SSD. Perhaps the best thing about Godot
+                is the fact that the engine is completely free to use and open source. Unity is closed source and parts of Unreal are open source, but both of those engines 
+                will charge you if you make a certain amount of money with them. 
+            </p>
+            <p>
+                The workflow of Godot is great, and in my opnion it is the easiest engine to rapidly prototype in. Godot allows you to choose between
+                two primary means of programming game logic, using either C# or GodotScript. I prefer using GodotScript due to its python like syntax.
+                It is in this category that I believe Godot excels. I personally hate the current workflow of Unreal. In Unreal you are forced add game 
+                logic through the engines visual scripting solution known as blueprints, or by using C++. Neither choice is great. I am not a fan of visual 
+                scripting and I often find it to be a cumbersome and visually cluttered approach. C++ is a better approach in my opinion, but the power of the language
+                is an overkill for most things and often requires many lines of code to do otherwise simple tasks. 
+            </p>
+        </div>
+    </section>
+
+
+    <footer class='bg-light'>
+        <div class='container text-muted text-center'>
+            <p> Copyright &copy; 2020 Cliff Wilson</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
