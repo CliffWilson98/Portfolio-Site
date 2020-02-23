@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cliff Wilson Portfolio</title>
+
+    <style>
+        section:before{
+            height:58px;
+            content: "";
+            display: block;
+        }
+
+        section{
+            min-height: 100vh;
+        }
+
+    </style>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+
+    <nav id="top-navbar" class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark'>
+        <a class='navbar-brand' href="index.html"><strong>Cliff Wilson Portfolio</strong></a>
+
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#menu'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class='collapse navbar-collapse' id='menu'>
+            <ul class='nav navbar-nav ml-auto'>
+                <li class='nav-item'>
+                    <a class='nav-link' href="index.html"> Back To Home </a>
+                </li>
+        </div>
+    </nav>
+
+    <section class='text-light'>
+        <div class="container-fluid text-center">
+            <h1> The JavaScript Art Generator</h1>
+        </div>
+        <hr>
+        <div class="container-fluid text-center col-md-8">
+            <img src="images/art_generator.png">
+            <p class="mt-3"> 
+                The JavaScript art generator was one of the first projects that I made on my own and pushed to GitHub when I began learning how to program.
+                Despite its simplicity and my lack of experience at the time, I still believe that it is one of the more interesting and novel things I have created.
+                I had originally set out to create a pong type game in JavaScript on an HTMl canvas, but had accidentally forgotten to redraw the canvas background 
+                color on every frame after moving the cube. As a result the cube that was supposed to represent the pong ball ended up leaving a trail behind it. After realizing
+                the potential of this cube to generate interesting patterns I decided to completely abandon my original idea.
+            </p>
+            <p class="mt-3"> 
+                As part of the first JavaScript homework for my class on building advanced web apps we had the option of creating any client based 
+                JavaScript application of our choice and adding it to our portfolio website. I decided to take the almost two year old code that had been sitting 
+                on github and add new features to it.
+            </p>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src=rhttps://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,5 +1,3 @@
-var xVelocity = 2;
-var yVelocity = 2;
 var canvasContext;
 var canvasHeight;
 var canvasWidth;
@@ -11,7 +9,7 @@ var canvas;
 
 class Player
 {
-		constructor(x, y, width, height, color)
+		constructor(x, y, width, height, color, xVelocity, yVelocity)
 		{
 			this.x = x;
 			this.y = y;
@@ -38,10 +36,10 @@ function initializeData ()
 
 function initializePlayers(){
 	players = []
-	players.push(new Player(0, 0, 32, 32, "yellow"));
-	players.push(new Player(468, 468, 32, 32, "blue"));
-	players.push(new Player(468, 0, 32, 32, "red"));
-	players.push(new Player(0, 468, 32, 32, "green"));
+	players.push(new Player(0, 0, 32, 32, document.getElementById("box1Color").value, 2, 2));
+	players.push(new Player(468, 468, 32, 32, document.getElementById("box2Color").value, 2, 2));
+	players.push(new Player(468, 0, 32, 32, document.getElementById("box3Color").value, 2, 2));
+	players.push(new Player(0, 468, 32, 32, document.getElementById("box4Color").value, 2, 2));
 }
 
 function drawPlayer (player)
@@ -55,7 +53,8 @@ function drawPlayer (player)
 
 function drawBackground()
 {
-	canvasContext.fillStyle = "#008080";
+	canvasContext.fillStyle = document.getElementById("backgroundColor").value;
+	console.log(canvasContext.fillStyle);
 	canvasContext.fillRect(0,0,canvasHeight,canvasWidth);
 }
 
