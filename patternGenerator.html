@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<style>
+
+html {
+		text-align: center;
+}
+
+body{
+	background-color: #C6E2FF;
+}
+
+button{
+	border-radius: 10px;
+}
+
+</style>
+
+<html>
+
+<script src="scripts/patternGenerator.js"></script>
+<body>
+
+	<h1 style = "padding-top: 10px"> JAVASCRIPT ART GENERATOR </h1>
+
+	<p> The following buttons allow you to modify the behavior of the squares. </p>
+
+	<h2> <button onclick="restart()">Restart Simulation</button> | <button onclick="randomPositionSpawn()">Random Position Spawn</button> | <button onclick="randomizeVelocity()">Random Velocity</button> | <button onclick="randomizeVelocitySynced()">Random Synchronized Velocity</button></h2>
+	<h2> <button onclick="pauseGame()">Pause</button> | <button onclick="exportCanvas()">View As Image</button> </h2>
+	<h4>
+		<input type="checkbox" name="toggleTrail" value="trailValue" id="trail"> Leave Trail
+		<input type="checkbox" name="playerCheckBox" value="Box1" id = "Box1"> Box 1
+		<input type="checkbox" name="playerCheckBox" value="Box2" id = "Box2"> Box 2
+		<input type="checkbox" name="playerCheckBox" value="Box3" id = "Box3"> Box 3
+		<input type="checkbox" name="playerCheckBox" value="Box4" id = "Box4"> Box 4
+	</h4>
+	<canvas id="gameCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+
+</body>
+</html>
