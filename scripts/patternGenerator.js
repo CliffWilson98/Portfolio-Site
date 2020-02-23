@@ -3,24 +3,46 @@ var canvasHeight;
 var canvasWidth;
 var framerate = 60
 var trailOn = true;
-var players = [];
+var boxes = [];
 var paused = false;
 var canvas;
 
-class Player
+class Box
 {
-		constructor(x, y, width, height, color, xVelocity, yVelocity)
-		{
-			this.x = x;
-			this.y = y;
-			this.width = width;
-			this.height = height;
-			this.color = color;
-			this.xVelocity = xVelocity;
-			this.yVelocity = yVelocity;
-			this.isVisible = false;
-		}
+	constructor(x, y, width, height, color, xVelocity, yVelocity)
+	{
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.color = color;
+		this.xVelocity = xVelocity;
+		this.yVelocity = yVelocity;
+		this.isVisible = false;
+	}
 
+	draw()
+	{
+		if (this.isVisible == true)
+		{
+			canvasContext.fillStyle = this.color;
+			canvasContext.fillRect(this.x, this.y, this.width, this.height);
+		}
+	}
+
+	move()
+	{
+		if (this.x > 468 || this.x < 0)
+		{
+			this.xVelocity = this.xVelocity * -1;
+		}
+		if (this.y > 468 || this.y < 0)
+		{
+			this.yVelocity = this.yVelocity * -1;
+		}
+		this.x += this.xVelocity;
+		this.y += this.yVelocity;
+	}
 }
 
 function initializeData ()
@@ -29,47 +51,23 @@ function initializeData ()
 	canvasWidth = canvas.width;
 	canvasHeight = canvas.height;
 	canvasContext = canvas.getContext("2d");
-	initializePlayers();
+	initializeBoxes();
 	document.getElementById("Box1").checked = true;
 	document.getElementById("trail").checked = true;
 }
 
-function initializePlayers(){
-	players = []
-	players.push(new Player(0, 0, 32, 32, document.getElementById("box1Color").value, 2, 2));
-	players.push(new Player(468, 468, 32, 32, document.getElementById("box2Color").value, 2, 2));
-	players.push(new Player(468, 0, 32, 32, document.getElementById("box3Color").value, 2, 2));
-	players.push(new Player(0, 468, 32, 32, document.getElementById("box4Color").value, 2, 2));
-}
-
-function drawPlayer (player)
-{
-	if (player.isVisible == true)
-	{
-		canvasContext.fillStyle = player.color;
-		canvasContext.fillRect(player.x, player.y, player.width, player.height);
-	}
+function initializeBoxes(){
+	boxes = []
+	boxes.push(new Box(0, 0, 32, 32, document.getElementById("box1Color").value, 2, 2));
+	boxes.push(new Box(468, 468, 32, 32, document.getElementById("box2Color").value, 2, 2));
+	boxes.push(new Box(468, 0, 32, 32, document.getElementById("box3Color").value, 2, 2));
+	boxes.push(new Box(0, 468, 32, 32, document.getElementById("box4Color").value, 2, 2));
 }
 
 function drawBackground()
 {
 	canvasContext.fillStyle = document.getElementById("backgroundColor").value;
-	console.log(canvasContext.fillStyle);
 	canvasContext.fillRect(0,0,canvasHeight,canvasWidth);
-}
-
-function movePlayer(player)
-{
-	if (player.x > 468 || player.x < 0)
-	{
-		player.xVelocity = player.xVelocity * -1;
-	}
-	if (player.y > 468 || player.y < 0)
-	{
-		player.yVelocity = player.yVelocity * -1;
-	}
-	player.x += player.xVelocity;
-	player.y += player.yVelocity;
 }
 
 function gameLoop()
@@ -79,9 +77,9 @@ function gameLoop()
 		{
 			drawBackground();
 		}
-		players.forEach((player) => {
-			movePlayer(player);
-			drawPlayer(player);
+		boxes.forEach((box) => {
+			box.move();
+			box.draw();
 		});
 		checkBoxManager();
 	}
@@ -90,24 +88,24 @@ function gameLoop()
 function restart()
 {
 	drawBackground();
-	initializePlayers();
+	initializeBoxes();
 }
 
 function randomPositionSpawn()
 {
 	drawBackground();
-	players.forEach((player) => {
-		player.x = Math.random() * 468;
-		player.y = Math.random() * 468;
+	boxes.forEach((box) => {
+		box.x = Math.random() * 468;
+		box.y = Math.random() * 468;
 	});
 }
 
 function randomizeVelocity()
 {
 	drawBackground();
-	players.forEach((player) => {
-		player.xVelocity = Math.random() * 10;
-		player.yVelocity = Math.random() * 10;
+	boxes.forEach((box) => {
+		box.xVelocity = Math.random() * 10;
+		box.yVelocity = Math.random() * 10;
 	});
 }
 
@@ -116,19 +114,19 @@ function randomizeVelocitySynced()
 	drawBackground();
 	xVelocity = Math.random() * 10;
 	yVelocity = Math.random() * 10;
-	players.forEach((player) => {
-		player.xVelocity = xVelocity;
-		player.yVelocity = yVelocity;
+	boxes.forEach((box) => {
+		box.xVelocity = xVelocity;
+		box.yVelocity = yVelocity;
 	});
 }
 
 function checkBoxManager()
 {
 	trailOn = document.getElementById("trail").checked;
-	players[0].isVisible = document.getElementById("Box1").checked;
-	players[1].isVisible = document.getElementById("Box2").checked;
-	players[2].isVisible = document.getElementById("Box3").checked;
-	players[3].isVisible = document.getElementById("Box4").checked;
+	boxes[0].isVisible = document.getElementById("Box1").checked;
+	boxes[1].isVisible = document.getElementById("Box2").checked;
+	boxes[2].isVisible = document.getElementById("Box3").checked;
+	boxes[3].isVisible = document.getElementById("Box4").checked;
 }
 
 function pauseGame(){
