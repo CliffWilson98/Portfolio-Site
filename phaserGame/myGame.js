@@ -1,4 +1,3 @@
-//TODO DO SOMETHING WITH LOCAL STORAGE
 var config = {
     type: Phaser.AUTO,
     width: 800,
@@ -17,6 +16,7 @@ var game = new Phaser.Game(config);
 
 var player, otherPlayer;
 var score = 0;
+var gameOver = false
 var scoreText
 var enemyArray;
 var shipX, shipY
@@ -36,8 +36,8 @@ function create (){
     this.input.setDefaultCursor('url(assets/ships/SF01.cur), pointer');
 
     player = this.add.sprite(shipX, shipY, 'ship');
-    player.setDisplaySize(50, 50);
-    player.setSize(50, 50);
+    player.setDisplaySize(40, 40);
+    player.setSize(40, 40);
 
     scoreText = this.add.text(10, 10, 'init', { font: '48px Arial', fill: '#000000' });
 
@@ -55,23 +55,44 @@ function create (){
 }
 
 function update(time, delta){
-    let secondsDelta = delta/1000
-    score += 5
-    scoreText.setText("Score: " + score)
+    if (!gameOver){
+        let secondsDelta = delta/1000
+        score += 1
+        scoreText.setText("Score: " + score)
 
-    if ((score / 100) > enemyArray.length && enemyArray.length < 30){
-        enemyArray.push(new Enemy(this))
+        if ((score / 100) > enemyArray.length && enemyArray.length < 15){
+            enemyArray.push(new Enemy(this))
+        }
+
+        handleInput(secondsDelta)
+        updateEnemies(secondsDelta)
     }
-
-    handleInput(secondsDelta)
-    updateEnemies(secondsDelta)
+    else{
+        let highestScore = localStorage.getItem("highestScore")
+        let gameOverText
+        if (highestScore != null){
+            if (highestScore > score){
+                gameOverText = `GAME OVER\n Your Score: ${score}\n Your Highest Score: ${highestScore}`
+            }
+            else{
+                gameOverText = `GAME OVER\n Your Score: ${score}\n Your Highest Score: ${score}`
+                localStorage.setItem("highestScore", score)
+            }
+        }
+        if (highestScore == null){
+            gameOverText = `GAME OVER\n Your Score: ${score}\n Your Highest Score: ${score}`
+            localStorage.setItem("highestScore", score)
+        }
+        let gameOverPopup = this.add.text(200, 300, gameOverText, { fontSize: '32px', fill: '#fff', align:'center'});
+        gameOverPopup.setDepth(1);
+    }
 }
 
 function updateEnemies(delta){
     for(i = 0; i < enemyArray.length; i ++){
         enemyArray[i].move(delta)
         if (checkOverlap(enemyArray[i].sprite, player)){
-            // console.log("overlap")
+            this.gameOver = true
         }
     }
 }
@@ -99,31 +120,29 @@ function checkOverlap(spriteA, spriteB){
 }
 
 class Enemy{
-    //TODO - go to random x location when spawned and make sineModifier different for every asteroid
-    //TODO make everything framerate independent
     constructor(phaser){
-        this.startY = (Math.random() * - 300);
-        this.startX = (Math.random() * 800);
-        this.sprite = phaser.add.sprite(this.startX, this.startY, 'rock');
+        this.sprite = phaser.add.sprite(-100, -100, 'rock');
         this.sprite.setSize(50, 50);
         this.sprite.setDisplaySize(50, 50);
+        this.giveRandomSpawnLocation()
         this.yMoveSpeed = Math.random() * 100 + 100;
-        this.sineModifier = 300
-        // Math.random() * 250 + 100 
+        this.sineModifier = Math.random() * 500
         this.sineValue = 0
+        this.sineValueIncrement = Math.random() * .2
     }
 
     move(delta){
         if (this.sprite.y > 625){
-            this.sprite.y = this.startY
+            this.giveRandomSpawnLocation()
         }
         this.sprite.y += this.yMoveSpeed * delta
 
         this.sprite.x += (Math.sin(this.sineValue) * this.sineModifier) * delta
-        this.sineValue += .01
+        this.sineValue += this.sineValueIncrement
     }
 
-    spawn(){
-
+    giveRandomSpawnLocation(){
+        this.sprite.x = (Math.random() * 800);
+        this.sprite.y = (Math.random() * - 300);
     }
 }
