@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cliff Wilson Portfolio</title>
+
+    <style>
+        section:before{
+            height:58px;
+            content: "";
+            display: block;
+        }
+
+        section{
+            min-height: 100vh;
+        }
+
+    </style>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+
+    <nav id="top-navbar" class='navbar fixed-top navbar-expand-lg navbar-dark bg-dark'>
+        <a class='navbar-brand' href="index.html"><strong>Cliff Wilson Portfolio</strong></a>
+
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#menu'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+
+        <div class='collapse navbar-collapse' id='menu'>
+            <ul class='nav navbar-nav ml-auto'>
+                <li class='nav-item'>
+                    <a class='nav-link' href="index.html"> Back To Home </a>
+                </li>
+        </div>
+    </nav>
+
+    <section class='text-light'>
+        <div class="container-fluid text-center">
+            <h1> JavaScript Procedural Art Web App</h1>
+        </div>
+        <hr>
+        <div class="container-fluid text-center col-md-8">
+            <img src="images/artExample.png" class="rounded">
+            <figcaption class="figure-caption">An image created by an early unreleased build of the art generator</figcaption>
+            <p class="mt-3"> 
+                As part of my advanced web apps course we are required to build a full stack web app which includes backend database operations. I have decided to create a website in which users 
+                are able to create art on a JavaScript canvas and then share what they have created for other users to upvote if they like. If you are not interested in creating anything of your own, 
+                then you can still browse the website to view what others have created. It is important to note that the method
+                used to generate the art in this project is completely different from the JavaScript Pattern Generator that is already hosted on my site. The JavaScript Pattern Generator creates images by simulating
+                cubes that bounce off of the edge of the canvas and leave behind a trail. In this project users will have control over the images that are drawn to the canvas by using a set of pre defined modules which 
+                are combined to create the images. An example of the type of art that is possible with this approach is the image on this page. This image is created by first using a module that will generate a collection of random
+                points. A second module can then be placed which takes the set of points as input, and draws circles around those points. . Users will be able to control the size and color gradient of the generated circles. The reason 
+                that some circles appear more faded than others is because there are two distinct images of circles which have been blended together. I will work to add more modules that can be combined to great effect, but even with a small amount there is a wide range of images that can be generated. 
+            </p>
+            <p class="mt-3"> 
+                Although my plan is subject to change, my initial vision of the web app involves three pages. One page will be for users to browse any images that other users have created. Another page will be for users to view their profile and 
+                the art that they have created. The final, and perhaps most important, page will be the one in which images are actually created. It is difficult for me to accurately predict the database requirements before the construction of the core 
+                features of the app has begun, but I believe that my database will be relatively simple. I will need to keep track of each user's username and password, along with the images that they have uploaded. For each uploaded image I will need to keep track 
+                of the amount of likes that it has and which users have liked it. 
+            </p>
+            <p class="mt-3"> 
+                This project is heavily inspired by existing procedural art creators such as SPARTAN, Tilemancer, and Material Maker. All of those projects are fascinating to me and I enjoy the way that they allow 
+                users to create fascinating imagery without requiring any artistic ability.
+            </p>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src=rhttps://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
